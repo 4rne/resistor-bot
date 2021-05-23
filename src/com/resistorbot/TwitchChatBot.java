@@ -24,6 +24,7 @@ public class TwitchChatBot extends PircBot {
         }
         for (String channel : channels) {
             joinChannel("#" + channel);
+            System.out.println("Connected to: " + channel);
         }
 
         return true;
@@ -32,6 +33,7 @@ public class TwitchChatBot extends PircBot {
 	public void onMessage(String channel, String sender, String login, String hostname, String message)
     {
         if(message.toLowerCase().startsWith("!resistor ") || message.toLowerCase().startsWith("!widerstand ")) {
+            System.out.println(login + ": " + message);
             sendMessage(channel, "@" + login + " " + resistorColorCodeParser.parse(message.substring(message.indexOf(" ") + 1)));
         }
     }
