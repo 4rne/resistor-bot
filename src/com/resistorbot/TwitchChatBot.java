@@ -1,4 +1,4 @@
-package ResistorBot;
+package com.resistorbot;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

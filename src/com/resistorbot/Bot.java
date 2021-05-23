@@ -1,4 +1,4 @@
-package ResistorBot;
+package com.resistorbot;
 
 import java.util.Scanner;
 
