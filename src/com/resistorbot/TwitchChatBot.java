@@ -1,32 +1,17 @@
 package com.resistorbot;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 
 import org.jibble.pircbot.*;
 
 public class TwitchChatBot extends PircBot {
     private ResistorColorCodeParser resistorColorCodeParser;
 
-    public boolean init() {
-        String token = "oauth:";
-		setVerbose(true);
-
+    public boolean init(String token, String[] channels) {
         resistorColorCodeParser = new ResistorColorCodeParser();
 
-        try {
-            URL url = getClass().getResource("./twitch_secret_token");
-            BufferedReader reader = new BufferedReader(new FileReader(url.getPath()));
-            token += reader.readLine();
-            reader.close();
-        } catch (Exception e) {
-            System.err.println("Could not load chat oauth token from file: twitch_secret_token");
-            System.exit(0);
-        }
 		try {
-            connect("irc.twitch.tv", 6667, token);
+            connect("irc.twitch.tv", 6667, "oauth:" + token);
         } catch (NickAlreadyInUseException e) {
             e.printStackTrace();
             return false;
@@ -37,8 +22,10 @@ public class TwitchChatBot extends PircBot {
             e.printStackTrace();
             return false;
         }
+        for (String channel : channels) {
+            joinChannel("#" + channel);
+        }
 
-	// joinChannel("#chrisfigge");
         return true;
     }
 
