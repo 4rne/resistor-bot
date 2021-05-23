@@ -2,7 +2,7 @@ package ResistorBot;
 
 import java.util.Scanner;
 
-public class Main {
+public class Bot {
     public static void main(String[] args) {
         TwitchChatBot bot = new TwitchChatBot();
         bot.init();
