@@ -40,6 +40,7 @@ public class ResistorColorCodeParser {
         colorCodes.put("blau", ResistorRingColor.BLUE);
         colorCodes.put("violet", ResistorRingColor.VIOLET);
         colorCodes.put("violett", ResistorRingColor.VIOLET);
+        colorCodes.put("lila", ResistorRingColor.VIOLET);
         colorCodes.put("purple", ResistorRingColor.VIOLET);
         colorCodes.put("pink", ResistorRingColor.VIOLET);
         colorCodes.put("grey", ResistorRingColor.GREY);
