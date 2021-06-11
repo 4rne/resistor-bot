@@ -51,6 +51,7 @@ public class ResistorColorCodeParser {
         colorCodes.put("weiss", ResistorRingColor.WHITE);
         colorCodes.put("gold", ResistorRingColor.GOLD);
         colorCodes.put("silver", ResistorRingColor.SILVER);
+        colorCodes.put("silber", ResistorRingColor.SILVER);
         colorCodes.put("none", ResistorRingColor.NONE);
 
         tolerances = new HashMap<ResistorRingColor, String>();
