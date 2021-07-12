@@ -32,7 +32,11 @@ public class TwitchChatBot extends PircBot {
 
 	public void onMessage(String channel, String sender, String login, String hostname, String message)
     {
-        if(message.toLowerCase().startsWith("!resistor ") || message.toLowerCase().startsWith("!widerstand ")) {
+        if(message.toLowerCase().startsWith("!resistor help") || message.toLowerCase().startsWith("!widerstand help")) {
+            System.out.println(login + ": " + message);
+            sendMessage(channel, "@" + login + " Find me on GitHub /4rne/resistor-bot");
+        }
+        else if(message.toLowerCase().startsWith("!resistor ") || message.toLowerCase().startsWith("!widerstand ")) {
             System.out.println(login + ": " + message);
             sendMessage(channel, "@" + login + " " + resistorColorCodeParser.parse(message.substring(message.indexOf(" ") + 1)));
         }
