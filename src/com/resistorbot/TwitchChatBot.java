@@ -6,11 +6,20 @@ import org.jibble.pircbot.*;
 
 public class TwitchChatBot extends PircBot {
     private ResistorColorCodeParser resistorColorCodeParser;
+    private String token;
+    private String[] channels;
+
 
     public boolean init(String token, String[] channels) {
         resistorColorCodeParser = new ResistorColorCodeParser();
+        token = this.token;
+        channels = this.channels.clone();
 
-		try {
+        return connect();
+    }
+
+    public boolean connect() {
+        try {
             connect("irc.twitch.tv", 6667, "oauth:" + token);
         } catch (NickAlreadyInUseException e) {
             e.printStackTrace();
@@ -28,6 +37,17 @@ public class TwitchChatBot extends PircBot {
         }
 
         return true;
+    }
+
+    @Override
+    protected void onDisconnect() {
+        super.onDisconnect();
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        connect();
     }
 
 	public void onMessage(String channel, String sender, String login, String hostname, String message)
