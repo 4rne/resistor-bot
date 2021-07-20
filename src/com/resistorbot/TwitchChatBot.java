@@ -9,11 +9,10 @@ public class TwitchChatBot extends PircBot {
     private String token;
     private String[] channels;
 
-
     public boolean init(String token, String[] channels) {
         resistorColorCodeParser = new ResistorColorCodeParser();
-        token = this.token;
-        channels = this.channels.clone();
+        this.token = token;
+        this.channels = channels.clone();
 
         return connect();
     }
